@@ -1,0 +1,37 @@
+@all: @raw-files;
+
+@raw-files: [deps.raw-files];
+
+>deps.raw-files: masterfilelist.txt
+{
+    ./mkfilenames.py --start_date $(cat START_DATE) --end_date $(cat END_DATE) < masterfilelist.txt
+}
+
+masterfilelist.txt:
+{
+    wget -c http://data.gdeltproject.org/gdeltv2/masterfilelist.txt
+    touch -c masterfilelist.txt
+}
+
+data/$DIR/$RAWFILENAME.$CSV: data/zips/$RAWFILENAME.$CSV.zip
+{
+    unzip data/zips/$RAWFILENAME.$CSV.zip -d data/$DIR/
+    touch -c data/$DIR/$RAWFILENAME.$CSV
+}
+
+data/zips/$RAWFILENAME.$CSV.zip: -p data/zips/
+{
+    wget -c http://data.gdeltproject.org/gdeltv2/$RAWFILENAME.$CSV.zip -P data/zips/ --tries=5
+    touch -c data/zips/$RAWFILENAME.$CSV.zip
+}
+
+$DIR/:
+{
+    mkdir -p $DIR
+}
+
+@clean:
+{
+    rm deps.*
+    rm -rf data/
+}
