@@ -9,7 +9,7 @@
 
 masterfilelist.txt:
 {
-    wget -c http://data.gdeltproject.org/gdeltv2/masterfilelist.txt
+    wget -q --show-progress --progress=dot:mega -c http://data.gdeltproject.org/gdeltv2/masterfilelist.txt --tries=5
     touch -c masterfilelist.txt
 }
 
@@ -21,7 +21,7 @@ data/$DIR/$RAWFILENAME.$CSV: data/zips/$RAWFILENAME.$CSV.zip
 
 data/zips/$RAWFILENAME.$CSV.zip: -p data/zips/
 {
-    wget -c http://data.gdeltproject.org/gdeltv2/$RAWFILENAME.$CSV.zip -P data/zips/ --tries=5
+    wget -q --show-progress --progress=dot:mega -c http://data.gdeltproject.org/gdeltv2/$RAWFILENAME.$CSV.zip -P data/zips/ --tries=5
     touch -c data/zips/$RAWFILENAME.$CSV.zip
 }
 

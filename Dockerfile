@@ -1,10 +1,10 @@
 # gdelt-downloader
-# Version: 0.1
+# Version: 0.1.1
 # Description: Dockerfile for gdelt-downloader
 # Author: github.com/yfiua
 
 # Use the official Python base image
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 # Variables
 ENV n_jobs 1

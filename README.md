@@ -17,5 +17,13 @@ docker run -i -e njobs=N -e start_date=YYYYMMDD -e end_date=YYYYMMDD -v $(pwd)/d
 docker build -t gdelt-downloader .
 ```
 
+## Changelog
+
+* 0.1.1
+  * Less verbose output
+  * Use Python 3.12
+* 0.1.0
+  * Initial release
+
 ## Author
 [yfiua](https://github.com/yfiua)
