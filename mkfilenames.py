@@ -16,7 +16,7 @@ if args.start_date:
     try:
         start_date = datetime.strptime(args.start_date, '%Y%m%d')
     except ValueError:
-        print("Error: Invalid start_date format. Use YYYYMMDD format.")
+        print("Error: Invalid start_date format. Use YYYYMMDD format.", file=sys.stderr)
         sys.exit(1)
 else:
     start_date = datetime.strptime('19700101', '%Y%m%d')
@@ -25,7 +25,7 @@ if args.end_date:
     try:
         end_date = datetime.strptime(args.end_date, '%Y%m%d')
     except ValueError:
-        print("Error: Invalid end_date format. Use YYYYMMDD format.")
+        print("Error: Invalid end_date format. Use YYYYMMDD format.", file=sys.stderr)
         sys.exit(1)
 else:
     end_date = datetime.strptime('99991231', '%Y%m%d')
@@ -33,7 +33,7 @@ else:
 # Check if start_date < end_date
 if args.start_date and args.end_date:
     if args.start_date > args.end_date:
-        print("Error: start_date should be less than end_date.")
+        print("Error: start_date should be less than end_date.", file=sys.stderr)
         sys.exit(1)
 
 # Set UTF-8 encoding for stdout
