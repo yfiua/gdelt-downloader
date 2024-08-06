@@ -1,1 +1,7 @@
 data/
+deps.*
+masterfilelist.txt
+lastupdate.txt
+.git/
+.gitignore
+.DS_Store

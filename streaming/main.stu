@@ -1,0 +1,31 @@
+@all: @raw-files;
+
+@raw-files: [deps.raw-files];
+
+>deps.raw-files: < lastupdate.txt
+{
+    ./mkfilenames.py
+}
+
+data/$DIR/$RAWFILENAME.$CSV: data/zips/$RAWFILENAME.$CSV.zip
+{
+    unzip data/zips/$RAWFILENAME.$CSV.zip -d data/$DIR/
+    touch -c data/$DIR/$RAWFILENAME.$CSV
+}
+
+data/zips/$RAWFILENAME.$CSV.zip: -p data/zips/
+{
+    wget -q --show-progress --progress=dot:mega -c http://data.gdeltproject.org/gdeltv2/$RAWFILENAME.$CSV.zip -P data/zips/ --tries=5
+    touch -c data/zips/$RAWFILENAME.$CSV.zip
+}
+
+$DIR/:
+{
+    mkdir -p $DIR
+}
+
+@clean:
+{
+    rm deps.*
+    rm -rf data/
+}
