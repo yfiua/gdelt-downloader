@@ -1,0 +1,3 @@
+* * * * * cd /app && ./get-lastupdate.sh
+*/5+1 * * * * cd /app && ./stu
+
