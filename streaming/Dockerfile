@@ -18,6 +18,7 @@ COPY . /app
 RUN apt-get update -y \
         && apt-get install -y \
         curl \
+        wget \
         unzip \
         cron
 
@@ -27,13 +28,14 @@ RUN crontab gdelt-cronjobs
 # Add stu
 ADD https://github.com/yfiua/stu/releases/download/2.7.82/stu_amd64.deb stu_amd64.deb
 RUN dpkg -i stu_amd64.deb
+RUN rm stu_amd64.deb
 
 # Ensure the script is executable
 RUN chmod +x /app/*.py
 RUN chmod +x /app/*.sh
 
-RUN touch cron.log
+RUN touch /var/log/cron.log
 
 # Run the script by default when the container starts
-CMD [ "sh", "-c", "cron && tail -f cron.log" ]
+CMD [ "sh", "-c", "cron && tail -f /var/log/cron.log" ]
 

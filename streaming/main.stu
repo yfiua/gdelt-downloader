@@ -2,9 +2,9 @@
 
 @raw-files: [deps.raw-files];
 
->deps.raw-files: < lastupdate.txt
+>deps.raw-files: -o lastupdate.txt
 {
-    ./mkfilenames.py
+    ./mkfilenames.py < lastupdate.txt
 }
 
 data/$DIR/$RAWFILENAME.$CSV: data/zips/$RAWFILENAME.$CSV.zip
