@@ -22,5 +22,5 @@ for line in sys.stdin:
 
         if match_filename:
             # Print the extracted filename prefixed with "data/"
-            print(f"data/{match_filename.group(2)}/{match.group(1)}")
+            print(f"data/{match_filename.group(2)}.is_completed/{match.group(1)}.is_completed")
 

@@ -1,5 +1,5 @@
 # gdelt-downloader-streaming
-# Version: 0.1.0
+# Version: 0.2.1
 # Description: Dockerfile for gdelt-downloader-streaming
 # Author: github.com/yfiua
 

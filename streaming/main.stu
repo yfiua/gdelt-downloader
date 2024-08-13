@@ -7,6 +7,11 @@
     ./mkfilenames.py < lastupdate.txt
 }
 
+data/$DIR.is_completed/$RAWFILENAME.$CSV.is_completed: data/$DIR/$RAWFILENAME.$CSV -p data/$DIR.is_completed/
+{
+    touch data/$DIR.is_completed/$RAWFILENAME.$CSV.is_completed
+}
+
 data/$DIR/$RAWFILENAME.$CSV: data/zips/$RAWFILENAME.$CSV.zip
 {
     unzip data/zips/$RAWFILENAME.$CSV.zip -d data/$DIR/
