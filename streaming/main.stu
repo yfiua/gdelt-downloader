@@ -7,7 +7,7 @@
     ./mkfilenames.py < lastupdate.txt
 }
 
-data/$DIR.is_completed/$RAWFILENAME.$CSV.is_completed: data/$DIR/$RAWFILENAME.$CSV -p data/$DIR.is_completed/
+data/$DIR.is_completed/$RAWFILENAME.$CSV.is_completed: -t data/$DIR/$RAWFILENAME.$CSV -p data/$DIR.is_completed/
 {
     touch data/$DIR.is_completed/$RAWFILENAME.$CSV.is_completed
 }

@@ -29,6 +29,10 @@ docker build -t gdelt-downloader-streaming .
 
 ## Changelog
 
+* 0.2.2
+  * Bugfix
+* 0.2.1
+  * Do not download the same file when they are moved
 * 0.2
   * Add support for streaming data
 * 0.1.1
